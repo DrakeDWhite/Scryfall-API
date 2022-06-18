@@ -13,7 +13,7 @@ import pip._vendor.requests as requests
 ##  loop back to the original input if it's an invalid card search
 ##  clean up a lot of the code
 ##  account for invalid set codes
-##  make it prettier
+##  make it prettier (add it as functions, etc)
 
 ## define our base request string so we can append to it later
 urlRequest = "https://api.scryfall.com/cards/named?fuzzy="
@@ -67,6 +67,7 @@ scryfallResponse = requests.get(urlRequest).json()
 
 ##TO DO - add logic for catching 200 vs 404 before you print the dictionary 
 
-## print the name
+## print the name and ask for input
 print("We found your card! It's called " + scryfallResponse['name'] + ". What would you like to know about it?")
+
 infoInput = input("Valid inputs: Color; Mana Cost; CMC; Description: ")

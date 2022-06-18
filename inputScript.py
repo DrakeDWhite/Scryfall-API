@@ -63,9 +63,10 @@ while hasExtra.lower() != "n" or hasExtra.lower() == "no":
 ## send the request and convert it to a dictionary with .json()
 scryfallResponse = requests.get(urlRequest).json()
 ## print it just as a sanity check
-print(urlRequest)
+#print(urlRequest)
 
 ##TO DO - add logic for catching 200 vs 404 before you print the dictionary 
 
-## print the dictionary 
-print(scryfallResponse)
+## print the name
+print("We found your card! It's called " + scryfallResponse['name'] + ". What would you like to know about it?")
+infoInput = input("Valid inputs: Color; Mana Cost; CMC; Description: ")

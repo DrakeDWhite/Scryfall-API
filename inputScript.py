@@ -58,7 +58,9 @@ while hasExtra.lower() != "n" or hasExtra.lower() == "no":
     ## ask again!    
     hasExtra = str(input("Do you have any other parameters you'd like to search based on? (Y/N) "))
 
-
-scryfallResponse = requests.get(urlRequest)
+## send the request and convert it to a dictionary with .json()
+scryfallResponse = requests.get(urlRequest).json()
+## print it just as a sanity check
 print(urlRequest)
+## print the dictionary 
 print(scryfallResponse)

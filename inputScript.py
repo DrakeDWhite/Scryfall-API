@@ -2,6 +2,8 @@
 import re
 ## Import requests, so we can work with APIs - I guess vscode needs pip._vendor
 import pip._vendor.requests as requests
+#import to handle image output
+#import pip._vendor.PIL.Image as Image
 
 ## this is test is being done with the ScryFall REST APIs at https://scryfall.com/docs/api/cards/named
 
@@ -62,5 +64,8 @@ while hasExtra.lower() != "n" or hasExtra.lower() == "no":
 scryfallResponse = requests.get(urlRequest).json()
 ## print it just as a sanity check
 print(urlRequest)
+
+##TO DO - add logic for catching 200 vs 404 before you print the dictionary 
+
 ## print the dictionary 
 print(scryfallResponse)

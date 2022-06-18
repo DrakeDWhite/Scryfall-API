@@ -14,7 +14,7 @@ import pip._vendor.requests as requests
 ##  make it prettier
 
 ## define our base request string so we can append to it later
-urlRequest = "https://api.scryfall.com/cards/named&fuzzy="
+urlRequest = "https://api.scryfall.com/cards/named?fuzzy="
 
 ## First input - Since this only needs to be asked once, it's outside of the loop
 name = input("What is the name of your card?: ")
@@ -40,21 +40,25 @@ while hasExtra.lower() != "n" or hasExtra.lower() == "no":
                 setInput = str(input("Great! Enter the three letter code for your set: ").lower())
                 # make sure the set code is three alphanumeric chars (this is not yet accounting for fake set codes)
                 if re.fullmatch("\w{3}", setInput):
-                    # if they are, stop the loop!
+                    # if they are, stop the loop! If I'm ever going to account for anything other than "set", I'll have to make this a loop
                     break
                 else:
-                    # print if it's not three alphanum characters
+                    # print this if it's not three alphanum characters
                     print("Oopsie Whoopsie your input does not match a valid set code!")
         else:
             #account for anything other than "set" as extraParam
             print("You're stinky.")
-                    
+    ## wrap up the loop if they don't want parameters                 
     elif hasExtra.lower() =="n" or hasExtra.lower() == "no":
         #do the thing
         break
+    ## catch if they don't say yes or no
     else:
         print("That's not a valid response - please use Y/N.")
-        
+    ## ask again!    
     hasExtra = str(input("Do you have any other parameters you'd like to search based on? (Y/N) "))
 
+
+scryfallResponse = requests.get(urlRequest)
 print(urlRequest)
+print(scryfallResponse)
